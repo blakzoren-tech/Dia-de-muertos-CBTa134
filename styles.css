@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0a0a1a 0%, #1a0a2e 40%, #2d1b4e 100%);
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Título */
+.titulo {
+  position: absolute;
+  top: 8%;
+  text-align: center;
+  z-index: 10;
+  color: #ff9f43;
+  text-shadow: 
+    0 0 10px #ff6b35,
+    0 0 20px #ff6b35,
+    0 0 40px #e74c3c;
+  animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+.titulo h1 {
+  font-size: clamp(2rem, 6vw, 3.8rem);
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+
+.titulo p {
+  font-size: 1.1rem;
+  color: #f8c291;
+  margin-top: 8px;
+  letter-spacing: 2px;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35; }
+  to   { text-shadow: 0 0 20px #ff9f43, 0 0 40px #e74c3c, 0 0 60px #c0392b; }
+}
+
+/* Contenedor de animaciones */
+.escena {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ===== PÉTALOS DE CEMPASÚCHIL ===== */
+.petalo {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ff9f1a;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0.85;
+  animation: caer linear infinite;
+}
+
+.petalo::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffb142;
+  border-radius: 50% 50% 0 50%;
+  transform: rotate(45deg);
+}
+
+@keyframes caer {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.3;
+  }
+}
+
+/* ===== CALAVERAS FLOTANTES ===== */
+.calavera {
+  position: absolute;
+  font-size: 2.8rem;
+  animation: flotar 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 200, 100, 0.6));
+  user-select: none;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%      { transform: translateY(-35px) rotate(5deg); }
+}
+
+/* ===== VELAS ===== */
+.vela {
+  position: absolute;
+  bottom: 12%;
+  width: 14px;
+  height: 55px;
+  background: linear-gradient(to top, #f5e6c8, #fff8e7);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 180, 50, 0.4);
+}
+
+.vela::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 22px;
+  background: radial-gradient(ellipse at center, #ffdd57 0%, #ff9f1a 40%, #e74c3c 100%);
+  border-radius: 50% 50% 20% 20%;
+  animation: parpadeo 1.4s ease-in-out infinite alternate;
+}
+
+.vela::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 8px;
+  background: #333;
+  border-radius: 1px;
+}
+
+@keyframes parpadeo {
+  0%   { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 0.9; }
+  100% { transform: translateX(-50%) scale(1.15) rotate(2deg); opacity: 1; }
+}
+
+/* Altar decorativo inferior */
+.altar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to top, #1a0a2e, transparent);
+  pointer-events: none;
+}
+
+/* Flores en el altar */
+.flor-altar {
+  position: absolute;
+  bottom: 25px;
+  font-size: 1.6rem;
+  animation: balanceo 3s ease-in-out infinite;
+}
+
+@keyframes balanceo {
+  0%, 100% { transform: rotate(-8deg); }
+  50%      { transform: rotate(8deg); }
+}
+.btn-inicio {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4CAF50; /* Color de fondo (puedes cambiarlo) */
+    color: white;             /* Color del texto */
+    text-decoration: none;    /* Quita el subrayado del enlace */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    border-radius: 5px;       /* Bordes redondeados */
+    transition: background-color 0.3s ease;
+    
+    /* Si quieres centrarlo o posicionarlo al final */
+    margin: 20px auto;
+    text-align: center;
+}
+
+.btn-inicio:hover {
+    background-color: #45a049; /* Color cuando pasas el mouse por encima */
+}
